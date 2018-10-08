@@ -1,0 +1,7 @@
+<suite name="softwaretestingmaterial" verbose="1">
+ <test name="login">
+ <classes>
+ <class name="appTests.TextBoxandRadioButtonTest" />
+ </classes>
+ </test>
+</suite>
