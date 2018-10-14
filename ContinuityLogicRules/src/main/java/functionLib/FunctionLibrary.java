@@ -1,18 +1,18 @@
 package functionLib;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
-import java.text.SimpleDateFormat;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.openqa.selenium.interactions.Actions;		
 
 import Utilities.CommonUtility;
 
@@ -26,7 +26,8 @@ public class FunctionLibrary {
     	System.out.println("URL....."+baseUrl);
     	System.setProperty("webdriver.chrome.driver", driverPath);
     	driver = new ChromeDriver();
-    	driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+    	//driver = new FirefoxDriver(); 
+    	driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
     	driver.get(baseUrl);
     	driver.manage().window().maximize();
     	return driver;
@@ -73,7 +74,16 @@ public class FunctionLibrary {
    	public static void closeBrowser(){
 	driver.quit();
 	}
-   	
+   	 public void explicitWait(int time)
+   	 {
+   		 try
+   		 {
+   		   wait(time);
+   		 }catch(InterruptedException e)
+   		 {
+   			 
+   		 }
+   	 }
     public static String getFormattedDate(){
         Calendar cal=Calendar.getInstance();
         cal.setTime(new Date());
